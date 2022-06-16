@@ -6,11 +6,11 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
 {
     internal class EditViewModel : ViewModelBase
     {
-        public ICommand NavigateHomeCommand { get; }
+
 
         public EditViewModel(NavigationStore navigationStore)
         {
-            NavigateHomeCommand = new NavigateHomeCommand(navigationStore);
+            
         }
     }
 }

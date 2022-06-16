@@ -27,10 +27,10 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
         {
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-            NavigateHomeCommand = new NavigateHomeCommand(navigationStore);
-            NavigateExamCommand = new NavigateExamCommand(navigationStore);
-            NavigateEditCommand = new NavigateEditCommand(navigationStore);
-            NavigateSettingsCommand = new NavigateSettingsCommand(navigationStore);
+            NavigateHomeCommand = new NavigateCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
+            NavigateExamCommand = new NavigateCommand<ExamViewModel>(navigationStore, () => new ExamViewModel(navigationStore));
+            NavigateEditCommand = new NavigateCommand<EditViewModel>(navigationStore, () => new EditViewModel(navigationStore)); 
+            NavigateSettingsCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore));
             QuitCommand = new QuitCommand();
         }
 
