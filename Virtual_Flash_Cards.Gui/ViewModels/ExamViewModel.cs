@@ -28,7 +28,7 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
 
       ParameterNavigationService<ExamSettings, ExamResultViewModel> examResultNavigationService = new(navigationStore, _settings,
         (parameter) => new ExamResultViewModel(parameter, navigationStore));
-      NavigateExamResultCommand = new NavigateCommand<ExamSettings, ExamResultViewModel>(examResultNavigationService);
+      NavigateExamResultCommand = new NavigateCommand(examResultNavigationService);
     }
   }
 }
