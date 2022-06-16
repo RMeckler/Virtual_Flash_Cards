@@ -8,19 +8,16 @@ namespace Virtual_Flash_Cards.GUI.Commands
   internal class NavigateCommand<TParameter, TViewModel> : CommandBase
         where TViewModel : ViewModelBase
   {
-    private readonly ParameterNavigationService<TParameter, TViewModel> _navigationService;
-    private readonly TParameter _parameter;
+    private readonly INavigationService _navigationService;
   
-    public NavigateCommand(TParameter parameter, ParameterNavigationService<TParameter, TViewModel> navigationService)
+    public NavigateCommand(ParameterNavigationService<TParameter, TViewModel> navigationService)
     {
-      _parameter = parameter;
       _navigationService = navigationService;
     }
 
     public override void Execute(object parameter)
     {
-
-      _navigationService.Navigate(_parameter);
+      _navigationService.Navigate();
     }
   }
 }

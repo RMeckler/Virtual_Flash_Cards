@@ -5,7 +5,7 @@ using Virtual_Flash_Cards.GUI.ViewModels;
 
 namespace Virtual_Flash_Cards.GUI.Services
 {
-  internal class NavigationService<TViewModel>
+  internal class NavigationService<TViewModel> : INavigationService
         where TViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;

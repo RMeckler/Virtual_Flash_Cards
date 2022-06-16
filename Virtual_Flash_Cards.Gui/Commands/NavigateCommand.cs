@@ -5,12 +5,11 @@ using Virtual_Flash_Cards.GUI.ViewModels;
 
 namespace Virtual_Flash_Cards.GUI.Commands
 {
-  internal class NavigateCommand<TViewModel> : CommandBase
-        where TViewModel : ViewModelBase
+  internal class NavigateCommand : CommandBase
   {
-    private readonly NavigationService<TViewModel> _navigationService;
+    private readonly INavigationService _navigationService;
 
-    public NavigateCommand(NavigationService<TViewModel> navigationService)
+    public NavigateCommand(INavigationService navigationService)
     {
       _navigationService = navigationService;
     }

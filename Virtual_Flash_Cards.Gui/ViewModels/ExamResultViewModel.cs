@@ -23,12 +23,12 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
       _navigationStore = navigationStore;
       _settings = settings;
 
-      NavigateExamSettingsCommand = new NavigateCommand<ExamSettingsViewModel>(new NavigationService<ExamSettingsViewModel>(navigationStore, () => new ExamSettingsViewModel(navigationStore)));
-      NavigateHomeCommand = new NavigateCommand<HomeViewModel>(new NavigationService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore)));
+      NavigateExamSettingsCommand = new NavigateCommand(new NavigationService<ExamSettingsViewModel>(navigationStore, () => new ExamSettingsViewModel(navigationStore)));
+      NavigateHomeCommand = new NavigateCommand(new NavigationService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore)));
 
-      ParameterNavigationService<ExamSettings, ExamViewModel> examNavigationService = new(navigationStore,
+      ParameterNavigationService<ExamSettings, ExamViewModel> examNavigationService = new(navigationStore, _settings,
         (parameter) => new ExamViewModel(parameter, navigationStore));
-      NavigateExamCommand = new NavigateCommand<ExamSettings, ExamViewModel>(settings, examNavigationService);
+      NavigateExamCommand = new NavigateCommand<ExamSettings, ExamViewModel>(examNavigationService);
     }
 
     ~ExamResultViewModel()
