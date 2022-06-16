@@ -13,11 +13,6 @@
         mc:Ignorable="d"
         FontSize ="20"
         Title="Virtual Flash Cards" MinHeight="450" MinWidth="800">
-    <Window.CommandBindings>
-        <CommandBinding Command="commands:ApplicationCommands.Quit" 
-                        Executed="QuitCommandOnExecuted"/>
-    </Window.CommandBindings>
-
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
@@ -39,8 +34,8 @@
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                 <views:HomeView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodels:ExamViewModel}">
-                <examviews:ExamView/>
+            <DataTemplate DataType="{x:Type viewmodels:ExamSettingsViewModel}">
+                <examviews:ExamSettingsView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
                 <editviews:EditView/>
@@ -48,10 +43,16 @@
             <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
                 <settingsviews:SettingsView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ExamResultViewModel}">
+                <examviews:ExamResultView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ExamViewModel}">
+                <examviews:ExamView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <Button Grid.Row="1" Grid.Column="1" Margin="5"
-                Content="EXAM" Command="{Binding NavigateExamCommand}"/>
+                Content="EXAM" Command="{Binding NavigateExamSettingsCommand}"/>
         <Button Grid.Row="2" Grid.Column="1" Margin="5"
                 Content="Editor" Command="{Binding NavigateEditCommand}"/>
         <Button Grid.Row="4" Grid.Column="1" Margin="5"
