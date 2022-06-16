@@ -27,13 +27,14 @@ namespace Virtual_Flash_Cards.GUI
 
       services.AddSingleton<NavigationStore>();
       services.AddSingleton<GlobalSettings>();
+      services.AddTransient<ExamSettings>();
       services.AddSingleton<GlobalSettingsStore>();
 
       services.AddTransient<HomeViewModel>(s => new HomeViewModel(s.GetRequiredService<NavigationStore>()));
-      //TODO NavigationMitParameterProblematik
-      //services.AddTransient<ExamResultViewModel>(s => new NavigationService<ExamSettingsViewModel>(s.GetRequiredService<NavigationStore>(), () => new ExamSettingsViewModel(s.GetRequiredService<NavigationStore>(), homeNavigationService)));
-      //services.AddTransient<ExamViewModel>(s => new NavigationService<ExamSettingsViewModel>(s.GetRequiredService<NavigationStore>(), () => new ExamSettingsViewModel(s.GetRequiredService<NavigationStore>(), homeNavigationService)));
-      services.AddTransient<ExamSettingsViewModel>(s => new ExamSettingsViewModel(s.GetRequiredService<NavigationStore>(), homeNavigationService(s)));
+    services.AddTransient<ExamResultViewModel>(s => new ExamResultViewModel(s.GetRequiredService<ExamSettings>(),s.GetRequiredService<NavigationStore>(), CreateHomeNavigationService(s),
+        CreateExamNavigationService(s), CreateExamSettingsNavigationService(s)));
+      services.AddTransient<ExamViewModel>(s => new ExamViewModel(s.GetRequiredService<ExamSettings>(), s.GetRequiredService<NavigationStore>(), CreateHomeNavigationService(s), CreateExamResultNavigationService(s)));
+      services.AddTransient<ExamSettingsViewModel>(s => new ExamSettingsViewModel(s.GetRequiredService<NavigationStore>(), CreateHomeNavigationService(s), CreateExamNavigationService(s)));
       services.AddTransient<EditViewModel>(s => new EditViewModel(s.GetRequiredService<NavigationStore>()));
       services.AddTransient<SettingsViewModel>(s => new SettingsViewModel(s.GetRequiredService<GlobalSettingsStore>(), s.GetRequiredService<NavigationStore>()));
 
@@ -42,8 +43,8 @@ namespace Virtual_Flash_Cards.GUI
         return new MainViewModel(
           s.GetRequiredService<GlobalSettingsStore>(),
           s.GetRequiredService<NavigationStore>(),
-          homeNavigationService(s),
-          examSettingsNavigationService(s),
+          CreateHomeNavigationService(s),
+          CreateExamSettingsNavigationService(s),
           editNavigationService(s),
           settingsNavigationService(s)
           );
@@ -75,23 +76,31 @@ namespace Virtual_Flash_Cards.GUI
     }
 
     #region Helper methods
-    private static NavigationService<HomeViewModel> homeNavigationService(IServiceProvider serviceProvider)
+    private static NavigationService<HomeViewModel> CreateHomeNavigationService(IServiceProvider serviceProvider)
     {
       return new NavigationService<HomeViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), () => serviceProvider.GetRequiredService<HomeViewModel>());
     }
 
-    private static NavigationService<ExamSettingsViewModel> examSettingsNavigationService(IServiceProvider serviceProvider)
+    private static NavigationService<ExamSettingsViewModel> CreateExamSettingsNavigationService(IServiceProvider serviceProvider)
     {
       return new NavigationService<ExamSettingsViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), () => serviceProvider.GetRequiredService<ExamSettingsViewModel>());
     }
 
-    //private static NavigationService<ExamViewModel> examNavigationService(IServiceProvider serviceProvider)
-    //{
-    //  return new ParameterNavigationService<ExamSettings, ExamViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), serviceProvider.GetRequiredService<ExamViewModel>().Settings,
-    //   (parameter) => new ExamViewModel(parameter, serviceProvider.GetRequiredService<NavigationStore>()));
+    private static ParameterNavigationService<ExamSettings, ExamViewModel> CreateExamNavigationService(IServiceProvider serviceProvider)
+    {
+      return new ParameterNavigationService<ExamSettings, ExamViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), 
+       (parameter) => new ExamViewModel(parameter, serviceProvider.GetRequiredService<NavigationStore>(), CreateHomeNavigationService(serviceProvider), CreateExamResultNavigationService(serviceProvider)));
+    }
 
-    //  //new NavigationService<ExamViewModel>(serviceProvider.GetRequiredService<NavigationStore>(), () => serviceProvider.GetRequiredService<ExamViewModel>());
-    //}
+    private static ParameterNavigationService<ExamSettings, ExamResultViewModel> CreateExamResultNavigationService(IServiceProvider serviceProvider)
+    {
+      return new ParameterNavigationService<ExamSettings, ExamResultViewModel>(serviceProvider.GetRequiredService<NavigationStore>(),
+              (parameter) => new ExamResultViewModel(parameter, serviceProvider.GetRequiredService<NavigationStore>(), 
+              CreateHomeNavigationService(serviceProvider),
+              CreateExamNavigationService(serviceProvider),
+              CreateExamSettingsNavigationService(serviceProvider)
+              ));
+    }
 
     private static NavigationService<EditViewModel> editNavigationService(IServiceProvider serviceProvider)
     {

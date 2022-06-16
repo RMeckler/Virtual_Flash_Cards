@@ -20,17 +20,17 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
 
     internal ExamResultViewModel(ExamSettings settings, 
       NavigationStore navigationStore, 
-      INavigationService homeNavigationService)
+      INavigationService homeNavigationService,
+      IParameterNavigationService<ExamSettings> examNavigationService,
+      INavigationService examSettingsNavigationService)
     {
       _navigationStore = navigationStore;
       _settings = settings;
 
-      NavigateExamSettingsCommand = new NavigateCommand(new NavigationService<ExamSettingsViewModel>(navigationStore, () => new ExamSettingsViewModel(navigationStore, homeNavigationService)));
-      NavigateHomeCommand = new NavigateCommand(homeNavigationService);
+      NavigateExamSettingsCommand = new NavigationCommand( examSettingsNavigationService);
+      NavigateHomeCommand = new NavigationCommand(homeNavigationService);
 
-      ParameterNavigationService<ExamSettings, ExamViewModel> examNavigationService = new(navigationStore, _settings,
-        (parameter) => new ExamViewModel(parameter, navigationStore, homeNavigationService));
-      NavigateExamCommand = new NavigateCommand(examNavigationService);
+      NavigateExamCommand = new ParameterNavigationCommand<ExamSettings>(examNavigationService, _settings);
     }
 
     ~ExamResultViewModel()

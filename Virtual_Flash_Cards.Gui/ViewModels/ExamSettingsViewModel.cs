@@ -15,17 +15,17 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
     #endregion
 
     private readonly NavigationStore _navigationStore;
+    private readonly ExamSettings _examSettings;
 
 
-    internal ExamSettingsViewModel(NavigationStore navigationStore, INavigationService homeNavigationService)
+    internal ExamSettingsViewModel(NavigationStore navigationStore, 
+      INavigationService homeNavigationService,
+      IParameterNavigationService<ExamSettings> examNavigationService)
     {
       
       _navigationStore = navigationStore;
-      NavigateHomeCommand = new NavigateCommand(homeNavigationService);
-
-      ParameterNavigationService<ExamSettings, ExamViewModel> navigationService = new(navigationStore, CreateExamSettings(),
-      (parameter) => new ExamViewModel(parameter, navigationStore, homeNavigationService));
-      NavigateExamCommand = new NavigateCommand(navigationService);
+      NavigateHomeCommand = new NavigationCommand(homeNavigationService);
+      NavigateExamCommand = new ParameterNavigationCommand<ExamSettings>(examNavigationService, CreateExamSettings());
     }
 
     private ExamSettings CreateExamSettings()

@@ -5,24 +5,22 @@ using Virtual_Flash_Cards.GUI.ViewModels;
 
 namespace Virtual_Flash_Cards.GUI.Services
 {
-  internal class ParameterNavigationService<TParameter, TViewModel> : INavigationService
-        where TViewModel : ViewModelBase
+  internal class ParameterNavigationService<TParameter, TViewModel> : IParameterNavigationService<TParameter> 
+    where TViewModel : ViewModelBase
 
   {
     private readonly NavigationStore _navigationStore;
     private readonly Func<TParameter, TViewModel> _createViewModel;
-    private readonly TParameter _parameter;
 
-    public ParameterNavigationService(NavigationStore navigationStore, TParameter parameter, Func<TParameter, TViewModel> createViewModel)
+    public ParameterNavigationService(NavigationStore navigationStore, Func<TParameter, TViewModel> createViewModel)
     {
       _navigationStore = navigationStore;
       _createViewModel = createViewModel;
-      _parameter = parameter;
     }
 
-    public void Navigate()
+    public void Navigate(TParameter parameter)
     {
-      var model = _createViewModel(_parameter);
+      var model = _createViewModel(parameter);
       if (IsProgressViewModel(model) && MessageBox.Show("You are currently in a process? Any progress will be lost. Do you want to continue?", "Progress will be lost!", MessageBoxButton.YesNo) == MessageBoxResult.No)
         return;
       _navigationStore.CurrentViewModel = model;
