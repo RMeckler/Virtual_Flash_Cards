@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_Flash_Cards.GUI.ViewModels
 {
-    internal class ViewModelBase : INotifyPropertyChanged
+    internal class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -15,5 +15,15 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+    internal virtual void Dispose()
+    {
+      
     }
+
+    void IDisposable.Dispose()
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

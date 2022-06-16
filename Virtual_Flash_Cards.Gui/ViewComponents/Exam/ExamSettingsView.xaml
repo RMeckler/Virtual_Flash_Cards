@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Settings View" HorizontalAlignment="Center"/>
         <Button Grid.Row="1" Grid.Column="1" Margin="5"
-                Content="=> EXAM" Command="{Binding StartExamCommand}"/>
+                Content="=> EXAM" Command="{Binding NavigateExamCommand}"/>
 
         <Button Grid.Row="2" Grid.Column="1" Margin="5"
                 Content="Home" Command="{Binding NavigateHomeCommand}"/>

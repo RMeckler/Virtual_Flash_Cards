@@ -9,9 +9,11 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
 {
   internal class HomeViewModel : ViewModelBase
     {
-       
-        public HomeViewModel(NavigationStore navigationStore)
-        {
-        }
+    private NavigationStore navigationStore;
+
+    public HomeViewModel(NavigationStore navigationStore)
+    {
+      this.navigationStore = navigationStore;
     }
+  }
 }

@@ -20,12 +20,11 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
     public string OrderOfCards => _settings.OrderOfCards;
     public int NumberOfCards => _settings.NumberOfCards;
 
-    internal ExamViewModel(ExamSettings settings,NavigationStore navigationStore)
+    internal ExamViewModel(ExamSettings settings, NavigationStore navigationStore)
     {
       _navigationStore = navigationStore;
       _settings = settings;
-      ///NavigateExamResultCommand = new NavigateCommand<ExamResultViewModel>(new NavigationService<ExamResultViewModel>(navigationStore, () => new ExamResultViewModel(navigationStore)));
-      NavigateHomeCommand = new NavigateCommand<HomeViewModel>(new NavigationService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore)));
+     NavigateHomeCommand = new NavigateCommand<HomeViewModel>(new NavigationService<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore)));
 
       ParameterNavigationService<ExamSettings, ExamResultViewModel> examResultNavigationService = new(navigationStore,
         (parameter) => new ExamResultViewModel(parameter, navigationStore));

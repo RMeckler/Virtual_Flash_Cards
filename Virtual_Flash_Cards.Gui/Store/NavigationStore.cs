@@ -13,6 +13,7 @@ namespace Virtual_Flash_Cards.GUI.Store
       get => _currentViewModel;
       set
       {
+        _currentViewModel?.Dispose();
         _currentViewModel = value;
         OnCurrentViewModelChanged();
       }

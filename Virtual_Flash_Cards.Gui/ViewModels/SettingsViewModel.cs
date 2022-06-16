@@ -9,7 +9,7 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
     
         public SettingsViewModel(GlobalSettingsStore globalSettingsStore, NavigationStore navigationStore)
         {
-      
+          
         }
     }
 }
