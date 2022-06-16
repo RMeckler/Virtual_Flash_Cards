@@ -10,36 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Virtual_Flash_Cards.GUI.View.Exam
 {
   /// <summary>
-  /// Interaction logic for Exam.xaml
+  /// Interaction logic for ExamPage.xaml
   /// </summary>
-  public partial class Exam : Window
+  public partial class ExamView : UserControl
   {
-    private List<Page> _pages = new();
-
-    public Exam()
+    public ExamView()
     {
       InitializeComponent();
-
-      _pages.Add(new ExamSettingsPage());
-      _pages.Add(new ExamPage());
-      _pages.Add(new ExamResultPage());
-
-
-    }
-    private void UpdatePage(int newPageNumber)
-    {
-      Frame.Navigate(_pages[0]);
-      
-    }
-
-    private void Button_Next(object sender, RoutedEventArgs e)
-    {
-      UpdatePage(1);
     }
   }
 }

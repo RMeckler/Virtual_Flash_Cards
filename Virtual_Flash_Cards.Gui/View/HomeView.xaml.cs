@@ -10,19 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Virtual_Flash_Cards.GUI.View.Exam
+namespace Virtual_Flash_Cards.GUI.View
 {
-  /// <summary>
-  /// Interaction logic for ExamPage.xaml
-  /// </summary>
-  public partial class ExamPage : Page
-  {
-    public ExamPage()
+    /// <summary>
+    /// Interaction logic for HomeView_.xaml
+    /// </summary>
+    public partial class HomeView : UserControl
     {
-      InitializeComponent();
+        public HomeView()
+        {
+            InitializeComponent();
+        }
     }
-  }
 }

@@ -1,0 +1,70 @@
+﻿<Window x:Class="Virtual_Flash_Cards.GUI.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Virtual_Flash_Cards.GUI"
+        xmlns:commands="clr-namespace:Virtual_Flash_Cards.GUI.Commands"
+        xmlns:viewmodels="clr-namespace:Virtual_Flash_Cards.GUI.ViewModels"
+        xmlns:views="clr-namespace:Virtual_Flash_Cards.GUI.View"
+        xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Exam"
+        xmlns:editviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Edit"
+        xmlns:settingsviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Settings"
+        mc:Ignorable="d"
+        FontSize ="20"
+        Title="Virtual Flash Cards" MinHeight="450" MinWidth="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:ApplicationCommands.Quit" 
+                        Executed="QuitCommandOnExecuted"/>
+    </Window.CommandBindings>
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                <views:HomeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ExamViewModel}">
+                <examviews:ExamView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
+                <editviews:EditView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <settingsviews:SettingsView/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <Button Grid.Row="1" Grid.Column="1" Margin="5"
+                Content="EXAM" Command="{Binding NavigateExamCommand}"/>
+        <Button Grid.Row="2" Grid.Column="1" Margin="5"
+                Content="Editor" Command="{Binding NavigateEditCommand}"/>
+        <Button Grid.Row="4" Grid.Column="1" Margin="5"
+                Content="Settings" Command="{Binding NavigateSettingsCommand}" />
+        <Button Grid.Row="5" Grid.Column="1" Margin="5"
+                Content="Home" Command="{Binding NavigateHomeCommand}" />
+        <Button Grid.Row="6" Grid.Column="1"  Margin="5"
+                Content="Exit" Command="{Binding QuitCommand}"/>
+
+        <Border Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Margin="5"
+            BorderBrush="Black" BorderThickness="1" >
+        
+            <ContentControl Content="{Binding CurrentViewModel}" />
+        </Border>
+    </Grid>
+</Window>

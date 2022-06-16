@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Virtual_Flash_Cards.GUI.View
+namespace Virtual_Flash_Cards.GUI.View.Edit
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for EditPage.xaml
+    /// </summary>
+    public partial class EditView : UserControl
     {
-      InitializeComponent();
+        public EditView()
+        {
+            InitializeComponent();
+        }
     }
-
-    void QuitCommandOnExecuted(object sender, ExecutedRoutedEventArgs e)
-    {
-      Application.Current.Shutdown();
-    }
-  }
 }

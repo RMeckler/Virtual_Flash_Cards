@@ -18,7 +18,5 @@ namespace Virtual_Flash_Cards.GUI.Commands
       Quit = new RoutedUICommand("Quit", "Quit", typeof(ApplicationCommands),
         inputGestures);
     }
-
-
   }
 }
