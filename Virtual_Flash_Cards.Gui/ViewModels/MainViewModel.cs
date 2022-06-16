@@ -23,18 +23,24 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
     public ICommand QuitCommand { get; }
     #endregion
 
-    public MainViewModel(GlobalSettingsStore globalSettingsStore, NavigationStore navigationStore)
+    public MainViewModel(GlobalSettingsStore globalSettingsStore, NavigationStore navigationStore,
+            INavigationService homeNavigationService,
+            INavigationService ExamSettingsNavigationService,
+            INavigationService EditNavigationService,
+            INavigationService SettingsNavigationService)
     {
       _globalSettingsStore = globalSettingsStore;
       _navigationStore = navigationStore;
-      _globalSettingsStore.CurrentGlobalSettingsChanged += OnGlobalSettingsChanged;  
+      _globalSettingsStore.CurrentGlobalSettingsChanged += OnGlobalSettingsChanged;
       _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-      NavigateHomeCommand = new NavigateCommand(new NavigationService<HomeViewModel>(navigationStore, () => new HomeViewModel( navigationStore )));
-      NavigateExamSettingsCommand = new NavigateCommand(new NavigationService<ExamSettingsViewModel>(navigationStore, () => new ExamSettingsViewModel(navigationStore)));
-      NavigateEditCommand = new NavigateCommand(new NavigationService<EditViewModel>(navigationStore, () => new EditViewModel(navigationStore)));
-      NavigateSettingsCommand = new NavigateCommand(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(globalSettingsStore, navigationStore)));
+      NavigateHomeCommand = new NavigateCommand(homeNavigationService);
+      NavigateExamSettingsCommand = new NavigateCommand(ExamSettingsNavigationService);
+      NavigateEditCommand = new NavigateCommand(EditNavigationService);
+      NavigateSettingsCommand = new NavigateCommand(SettingsNavigationService);
       QuitCommand = new QuitCommand();
     }
+
+
 
     private void OnCurrentViewModelChanged()
     {
