@@ -1,5 +1,5 @@
 ﻿using System;
-using Virtual_Flash_Cards.GUI.Utils;
+using Virtual_Flash_Cards.GUI.Store;
 using Virtual_Flash_Cards.GUI.ViewModels;
 
 namespace Virtual_Flash_Cards.GUI.Services
