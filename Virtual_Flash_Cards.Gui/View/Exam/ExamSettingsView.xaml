@@ -15,11 +15,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Grid.Column="1" Margin="5"
-                Content="=> EXAM" Command="{Binding NavigateExamCommand}"/>
-
+        <TextBlock Text="Settings View" HorizontalAlignment="Center"/>
         <Button Grid.Row="1" Grid.Column="1" Margin="5"
+                Content="=> EXAM" Command="{Binding StartExamCommand}"/>
+
+        <Button Grid.Row="2" Grid.Column="1" Margin="5"
                 Content="Home" Command="{Binding NavigateHomeCommand}"/>
     </Grid>
 </UserControl>
