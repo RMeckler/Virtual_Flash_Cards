@@ -7,16 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="View\Edit\EditView.xaml.cs">
+    <Compile Update="ViewComponents\Edit\EditView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="View\Edit\EditView.xaml">
+    <Page Update="ViewComponents\Edit\EditView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
 
 </Project>

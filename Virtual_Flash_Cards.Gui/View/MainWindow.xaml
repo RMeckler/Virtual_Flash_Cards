@@ -7,9 +7,10 @@
         xmlns:commands="clr-namespace:Virtual_Flash_Cards.GUI.Commands"
         xmlns:viewmodels="clr-namespace:Virtual_Flash_Cards.GUI.ViewModels"
         xmlns:views="clr-namespace:Virtual_Flash_Cards.GUI.View"
-        xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Exam"
-        xmlns:editviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Edit"
-        xmlns:settingsviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Settings"
+        xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Exam"
+        xmlns:editviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Edit"
+        xmlns:homeviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Home"
+        xmlns:settingsviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Settings"
         mc:Ignorable="d"
         FontSize ="20"
         Title="Virtual Flash Cards" MinHeight="450" MinWidth="800">
@@ -32,7 +33,7 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-                <views:HomeView/>
+                <homeviews:HomeView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:ExamSettingsViewModel}">
                 <examviews:ExamSettingsView/>

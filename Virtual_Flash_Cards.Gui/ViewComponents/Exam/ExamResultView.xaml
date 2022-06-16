@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Virtual_Flash_Cards.GUI.View.Exam.ExamResultView"
+﻿<UserControl x:Class="Virtual_Flash_Cards.GUI.ViewComponents.Exam.ExamResultView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewmodels="clr-namespace:Virtual_Flash_Cards.GUI.ViewModels"
       xmlns:views="clr-namespace:Virtual_Flash_Cards.GUI.View"
-      xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.View.Exam"
+      xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Exam"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
