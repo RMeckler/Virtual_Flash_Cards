@@ -21,6 +21,7 @@
             <ComboBoxItem>en-en</ComboBoxItem>-->
             </ComboBox>
         </StackPanel>
-        <CheckBox  IsChecked="{Binding NightMode}">Nightmode</CheckBox>
+        <CheckBox  IsChecked="{Binding NightMode, Mode=OneWay}">Nightmode</CheckBox>
+        <Button Command="{Binding SettingsCommand, Mode=OneWay}" Content="Use settings"/>
     </StackPanel>
 </UserControl>

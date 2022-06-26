@@ -10,6 +10,13 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
 {
   internal class SettingsViewModel : ViewModelBase
   {
+
+    #region Commands
+
+    public ICommand SettingsCommand { get; }
+
+    #endregion
+
     private GlobalSettingsStore _globalSettingsStore;
 
 
@@ -33,6 +40,7 @@ namespace Virtual_Flash_Cards.GUI.ViewModels
     public SettingsViewModel(GlobalSettingsStore globalSettingsStore, NavigationStore navigationStore)
     {
       _globalSettingsStore = globalSettingsStore;
+      SettingsCommand = new SettingsCommand(globalSettingsStore.GlobalSettings);
     }
   }
 }
