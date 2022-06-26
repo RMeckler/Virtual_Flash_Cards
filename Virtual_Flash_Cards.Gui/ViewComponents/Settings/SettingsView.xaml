@@ -3,12 +3,24 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Settings"
+      xmlns:viewmodels="clr-namespace:Virtual_Flash_Cards.GUI.ViewModels"
+      xmlns:views="clr-namespace:Virtual_Flash_Cards.GUI.View"
+      xmlns:examviews="clr-namespace:Virtual_Flash_Cards.GUI.ViewComponents.Exam"
+      xmlns:local="clr-namespace:Virtual_Flash_Cards.GUI"
+      xmlns:commands="clr-namespace:Virtual_Flash_Cards.GUI.Commands"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       >
 
-    <Grid>
-        <TextBlock Text="SettingsView"/>
-    </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Language</Label>
+            <ComboBox  SelectedValue="{Binding Language}"
+                  ItemsSource="{Binding Path=LanguagesList, Mode=OneTime}">
+                <!--<ComboBoxItem>de-de</ComboBoxItem>
+            <ComboBoxItem>en-en</ComboBoxItem>-->
+            </ComboBox>
+        </StackPanel>
+        <CheckBox  IsChecked="{Binding NightMode}">Nightmode</CheckBox>
+    </StackPanel>
 </UserControl>

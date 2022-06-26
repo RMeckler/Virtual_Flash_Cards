@@ -6,17 +6,17 @@ namespace Virtual_Flash_Cards.GUI.Store
   internal class GlobalSettingsStore
   {
   
-    private GlobalSettings globalSettings;
+    private GlobalSettings _globalSettings;
 
     public GlobalSettingsStore(GlobalSettings globalSettings)
     {
-      this.globalSettings = globalSettings;
+      this._globalSettings = globalSettings;
     }
 
     public GlobalSettings GlobalSettings
     {
-      get { return globalSettings; }
-      set { globalSettings = value;
+      get { return _globalSettings; }
+      set { _globalSettings = value;
         OnCurrentGlobalSettingsChanged();
       }
     }
