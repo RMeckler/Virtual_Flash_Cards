@@ -1,0 +1,26 @@
+﻿Settings:
+_________
+Sprache
+Hintergrundfarbe (Night Mode)
+Standardeinstellung?
+
+Exam Settings:
+Shuffle
+FrontFirst
+BothSides
+
+Exam:
+_____
+Progressbar / Horizontal Listview
+Button "Flip Backside"
+Button Right / Wrong
+
+Create/Edit:
+____________
+Page: Radiobutton Load Set (textfield file) or New Set (textfields Titel beschreibung) 
+=> Vertical Listview aller Flashcards (Links: Frage, Mitte: Antwort, Rechts Bild ). Unten: Create new => Page: Listcard erstellen
+
+=> Ordnerstruktur: (Ordner) .vfc => Info über flashcards ordner, flashcards bilder, sosntiges
+                            /Flashcards => enthält flashcards .xml
+                            /images => enthält images
+
